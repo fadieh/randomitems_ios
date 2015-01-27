@@ -10,6 +10,51 @@
 
 @implementation Item
 
+// designated initialiser
+- (instancetype)initWithItemName:(NSString *)name
+                  valueInDollars:(int)value
+                    serialNumber:(NSString *)sNumber
+
+{
+    self = [super init];
+    
+    if (self) {
+        _itemName = name;
+        _serialNumber = sNumber;
+        _valueInDollars = value;
+        _dateCreated = [[NSDate alloc] init];
+    }
+    
+    return self;
+}
+
+// second initialiser
+- (instancetype)initWithItemName:(NSString *)name
+
+{
+    return [self initWithItemName:name
+                   valueInDollars:0
+                     serialNumber:@""];
+}
+
+// Overriding init (inherited from NSObject)
+- (instancetype)init
+
+{
+    return [self initWithItemName:@"Item"];
+}
+
+// overriding description (from NSObject)
+
+- (NSString *)description
+{
+    NSString *descriptionString =
+    [[NSString alloc] initWithFormat: @"%@ (%@): Worth $%d, recorded on %@",
+    self.itemName, self.serialNumber, self.valueInDollars, self.dateCreated];
+    
+    return descriptionString;
+}
+
 - (void)setItemName:(NSString *)str
 {
     _itemName = str;
