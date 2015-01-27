@@ -17,6 +17,8 @@
     NSDate *_dateCreated;
 }
 
++ (instancetype)randomItem;
+
 // designated initialiser
 - (instancetype)initWithItemName:(NSString *)name
                   valueInDollars:(int)value
